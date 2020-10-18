@@ -9,6 +9,10 @@ CMakeFiles/LionV8.dir/main.cpp.o: ../main.h
 CMakeFiles/LionV8.dir/main.cpp.o: ../tokenizer/token.h
 CMakeFiles/LionV8.dir/main.cpp.o: ../tokenizer/tokenizer.h
 
+CMakeFiles/LionV8.dir/parser/Parser.cpp.o: ../parser/Parser.cpp
+CMakeFiles/LionV8.dir/parser/Parser.cpp.o: ../parser/Parser.h
+CMakeFiles/LionV8.dir/parser/Parser.cpp.o: ../tokenizer/token.h
+
 CMakeFiles/LionV8.dir/tokenizer/token.cpp.o: ../tokenizer/token.cpp
 CMakeFiles/LionV8.dir/tokenizer/token.cpp.o: ../tokenizer/token.h
 

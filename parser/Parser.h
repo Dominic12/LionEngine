@@ -5,7 +5,7 @@
 #ifndef LIONV8_PARSER_H
 #define LIONV8_PARSER_H
 
-#include "../tokenizer/token.h";
+#include "../tokenizer/token.h"
 #include <vector>
 
 class Parser {
