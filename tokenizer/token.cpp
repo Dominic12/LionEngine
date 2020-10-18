@@ -39,3 +39,20 @@ bool Token::is_punctuator() {
            this->value == ")" || this->value == ";" || this->value == "//" || this->value == "/*" ||
            this->value == "*/";
 }
+
+std::string Token::token_to_string(TokenType token) {
+    switch(token){
+        case TokenType::STRING:
+            return "string";
+        case TokenType::KEYWORD:
+            return "keyword";
+        case TokenType::IDENTIFIER:
+            return "identifier";
+        case TokenType::PUNCTUATOR:
+            return "punctuator";
+        case TokenType::NUMERIC:
+            return "number";
+
+    }
+    return std::string();
+}

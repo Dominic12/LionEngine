@@ -12,6 +12,28 @@ Parser::Parser(std::vector<TokenHolder> *tokens) {
 
 AbstractSyntaxTree *Parser::Parse() {
     AbstractSyntaxTree *tree = new AbstractSyntaxTree;
-    Logger::log("Parsing Tokens to AST");
+    for (int it = 0; it < this->_tokens->size(); it++) {
+        TokenHolder token = this->_tokens->at(it);
+        switch (token.type) {
+            case TokenType::KEYWORD:
+                this->generateVariableDeclaration(it, token);
+                break;
+            default:
+                Logger::log("Token Type");
+        }
+    }
     return tree;
 }
+
+VariableDeclaration Parser::generateVariableDeclaration(int index, TokenHolder token) {
+    VariableDeclaration declaration;
+    TokenHolder nextToken = this->_tokens->at(index + 1);
+    if(nextToken.type != TokenType::IDENTIFIER){
+        Logger::log("Error: Expected identifier but got " + Token::token_to_string(nextToken.type));
+    }
+
+
+
+    return declaration;
+}
+

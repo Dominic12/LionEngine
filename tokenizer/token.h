@@ -8,6 +8,7 @@
 #define LIONV8_TOKEN_H
 
 #include <string>
+#include <map>
 
 enum TokenType {
     KEYWORD,
@@ -16,6 +17,7 @@ enum TokenType {
     NUMERIC,
     STRING,
 };
+
 
 struct TokenPosition {
     int line;
@@ -26,6 +28,7 @@ struct TokenHolder {
     std::string value;
     TokenPosition position;
 };
+
 
 class Token {
 public:
@@ -43,6 +46,7 @@ public:
 
     bool contains_digit();
 
+    static std::string token_to_string(TokenType token);
 
 
 private:
