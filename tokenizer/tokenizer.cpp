@@ -7,6 +7,7 @@
 #include "tokenizer.h"
 #include "../helpers/Logger.h"
 
+#define DBG false
 
 Tokenizer::Tokenizer(std::string tokens) {
     this->tokenizeStr = tokens;
@@ -20,12 +21,12 @@ std::vector<TokenHolder> *Tokenizer::Tokenitze() {
     while (!this->isEOF()) {
         auto next = this->next();
         if (next.value == "") {
-            Logger::log("Throwing away next val");
             continue;
         }
         tokenHolders->push_back(next);
     }
 
+#if dbg
     for (auto const &value: *tokenHolders) {
         switch (value.type) {
             case TokenType::STRING:
@@ -55,6 +56,8 @@ std::vector<TokenHolder> *Tokenizer::Tokenitze() {
                 break;
         }
     }
+#endif
+    return tokenHolders;
 }
 
 TokenHolder Tokenizer::next() {

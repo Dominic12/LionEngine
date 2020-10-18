@@ -28,6 +28,12 @@ enum class ExpressionType {
     ObjectExpression,
     CallExpression
 };
+enum class BinaryExpressionOperator {
+    Addition,
+    Subtraction,
+    Multiplication,
+    Division
+};
 
 struct Statement {
 
@@ -46,7 +52,13 @@ struct Declaration : Statement {
 
 struct ExpressionStatement : Statement {
     ExpressionType Type;
-    char *value;
+    char *Value;
+};
+
+struct BinaryExpression : ExpressionStatement {
+    ExpressionStatement *Left;
+    ExpressionStatement *Right;
+    BinaryExpressionOperator Operator;
 };
 
 
@@ -58,8 +70,19 @@ struct VariableDeclaration : Declaration {
 
 struct FunctionDeclaration : Declaration {
     DeclarationType Type = DeclarationType::FunctionDeclarator;
-    std::vector<StatementIdentifier> parameters;
-    std::vector<Statement> *body;
+    std::vector<StatementIdentifier> Parameters;
+    std::vector<Statement> *Body;
+};
+
+struct CallExpression : ExpressionStatement {
+    ExpressionType Type;
+    struct Callee {
+        bool Computed;
+        StatementIdentifier *Object;
+        StatementIdentifier *Property;
+        std::vector<ExpressionStatement> *Arguments;
+    };
+
 };
 
 
@@ -69,8 +92,8 @@ struct BlockStatement : Statement {
 
 
 struct AbstractSyntaxTree {
-    std::string type;
-    std::vector<Statement> *program;
+    std::string Type;
+    std::vector<Statement> *Program;
 };
 
 

@@ -30,10 +30,9 @@ int main(int argc, char* argv[]) {
 
     Tokenizer tokenizer(inputStr);
 
-    std::vector<TokenHolder> *tokens = tokenizer.Tokenitze();
+    auto *tokens = tokenizer.Tokenitze();
+    Parser parser(tokens);
+    parser.Parse();
 
-    for(int i = 0; tokens->size(); i++){
-        std::cout << tokens->at(i).value;
-    }
     return 0;
 }

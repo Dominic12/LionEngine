@@ -6,11 +6,15 @@
 #define LIONV8_PARSER_H
 
 #include "../tokenizer/token.h"
+#include "AbstractSyntaxTree.h"
 #include <vector>
 
 class Parser {
 public:
     Parser(std::vector<TokenHolder> *);
+    AbstractSyntaxTree* Parse();
+private:
+    std::vector<TokenHolder> * _tokens;
 };
 
 

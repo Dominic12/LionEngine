@@ -8,7 +8,8 @@ bool Token::is_digit() {
 }
 
 bool Token::is_string() {
-    return (this->value.starts_with("\"") && this->value.ends_with("\"")) ||  (this->value.starts_with("'") && this->value.ends_with("'"));
+    return (this->value.starts_with("\"") && this->value.ends_with("\"")) ||
+           (this->value.starts_with("'") && this->value.ends_with("'"));
 }
 
 Token::Token(std::string value) {
@@ -16,7 +17,8 @@ Token::Token(std::string value) {
 }
 
 bool Token::is_keyword() {
-    return this->value == "let" || this->value == "const" || this->value == "var" || this->value == "function" || this->value == "if" || this->value == "else" || this->value == "for";
+    return this->value == "let" || this->value == "const" || this->value == "var" || this->value == "function" ||
+           this->value == "if" || this->value == "else" || this->value == "for";
 }
 
 bool Token::is_identifier() {
@@ -33,5 +35,7 @@ bool Token::contains_digit() {
 bool Token::is_punctuator() {
     return this->value == "." || this->value == "," || this->value == "||" || this->value == "&&" ||
            this->value == "+" || this->value == "-" || this->value == "=" || this->value == "==" ||
-           this->value == "=>" || this->value == "{"  || this->value == "}"  || this->value == "(" || this->value == ")" || this->value == ";";
+           this->value == "=>" || this->value == "{" || this->value == "}" || this->value == "(" ||
+           this->value == ")" || this->value == ";" || this->value == "//" || this->value == "/*" ||
+           this->value == "*/";
 }

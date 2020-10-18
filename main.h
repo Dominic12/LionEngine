@@ -9,5 +9,7 @@
 #include <fstream>
 #include "tokenizer/tokenizer.h"
 #include "tokenizer/token.h"
+#include "parser/Parser.h"
+#include "parser/AbstractSyntaxTree.h"
 #endif //LIONV8_MAIN_H
 
