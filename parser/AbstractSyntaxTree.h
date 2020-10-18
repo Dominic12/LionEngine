@@ -52,7 +52,7 @@ struct Declaration : Statement {
 
 struct ExpressionStatement : Statement {
     ExpressionType Type;
-    char *Value;
+    void *value;
 };
 
 struct BinaryExpression : ExpressionStatement {

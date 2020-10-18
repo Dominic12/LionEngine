@@ -15,7 +15,7 @@ public:
     AbstractSyntaxTree* Parse();
 private:
     std::vector<TokenHolder> * _tokens;
-    VariableDeclaration generateVariableDeclaration(int index, TokenHolder token);
+    std::tuple<VariableDeclaration*, int> generateVariableDeclaration(int index, TokenHolder token);
 };
 
 

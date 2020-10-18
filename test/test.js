@@ -1,4 +1,4 @@
-let const = 1;
+let a = 1;
 let b = "abcdf";
 
 function c(){

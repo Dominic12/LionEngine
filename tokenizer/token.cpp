@@ -37,7 +37,7 @@ bool Token::is_punctuator() {
            this->value == "+" || this->value == "-" || this->value == "=" || this->value == "==" ||
            this->value == "=>" || this->value == "{" || this->value == "}" || this->value == "(" ||
            this->value == ")" || this->value == ";" || this->value == "//" || this->value == "/*" ||
-           this->value == "*/";
+           this->value == "*/" || this->value == "!=";
 }
 
 std::string Token::token_to_string(TokenType token) {
