@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dominicjarmann/CLionProjects/LionV8/tokenizer/token.cpp
+token.h
+/Users/dominicjarmann/CLionProjects/LionV8/tokenizer/token.h
+
+/Users/dominicjarmann/CLionProjects/LionV8/tokenizer/token.h
+string
+-
+
