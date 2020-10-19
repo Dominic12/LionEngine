@@ -24,7 +24,7 @@ bool Token::is_keyword() {
 bool Token::is_identifier() {
     if (this->contains_digit()) return false;
     if (this->is_punctuator()) return false;
-
+    if (this->is_string()) return false;
     return !this->is_keyword();
 }
 
@@ -40,8 +40,8 @@ bool Token::is_punctuator() {
            this->value == "*/" || this->value == "!=";
 }
 
-std::string Token::token_to_string(TokenType token) {
-    switch(token){
+std::string Token::type_to_string(TokenType token) {
+    switch (token) {
         case TokenType::STRING:
             return "string";
         case TokenType::KEYWORD:

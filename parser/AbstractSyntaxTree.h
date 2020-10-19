@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include "../tokenizer/token.h"
+#include "../helpers/Logger.h"
 
 
 enum class DeclarationType {
@@ -26,7 +27,8 @@ enum class ExpressionType {
     LiteralExpression,
     NumericExpression,
     ObjectExpression,
-    CallExpression
+    CallExpression,
+    MemberExpression
 };
 enum class BinaryExpressionOperator {
     Addition,
@@ -36,12 +38,19 @@ enum class BinaryExpressionOperator {
 };
 
 struct Statement {
-
+    static void execute(){
+        Logger::log("Executing statement base");
+    }
 };
 
+struct BlockStatement : Statement {
+    std::vector<Statement *> *body;
+};
+
+
 struct StatementIdentifier {
-    TokenType Type;
-    std::string Name;
+    TokenType type;
+    std::string name;
 };
 
 struct Declaration : Statement {
@@ -55,7 +64,7 @@ struct ExpressionStatement : Statement {
     void *value;
 };
 
-struct BinaryExpression : ExpressionStatement {
+struct BinaryExpression : Statement {
     ExpressionStatement *Left;
     ExpressionStatement *Right;
     BinaryExpressionOperator Operator;
@@ -68,32 +77,33 @@ struct VariableDeclaration : Declaration {
     VariableDeclarationKind Kind;
 };
 
+
 struct FunctionDeclaration : Declaration {
-    DeclarationType Type = DeclarationType::FunctionDeclarator;
-    std::vector<StatementIdentifier> Parameters;
-    std::vector<Statement> *Body;
+    DeclarationType type = DeclarationType::FunctionDeclarator;
+    std::vector<StatementIdentifier> parameters;
+    BlockStatement *body;
+};
+
+
+struct MemberExpression : ExpressionStatement {
+    ExpressionType type = ExpressionType::MemberExpression;
+    bool computed;
+    StatementIdentifier *object;
+    StatementIdentifier *property;
 };
 
 struct CallExpression : ExpressionStatement {
-    ExpressionType Type;
-    struct Callee {
-        bool Computed;
-        StatementIdentifier *Object;
-        StatementIdentifier *Property;
-        std::vector<ExpressionStatement> *Arguments;
-    };
+    ExpressionType type;
+    MemberExpression callee;
+    std::vector<ExpressionStatement> *arguments;
 
-};
-
-
-struct BlockStatement : Statement {
 
 };
 
 
 struct AbstractSyntaxTree {
-    std::string Type;
-    std::vector<Statement> *Program;
+    std::string type;
+    BlockStatement* program;
 };
 
 

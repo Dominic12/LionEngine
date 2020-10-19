@@ -46,7 +46,7 @@ public:
 
     bool contains_digit();
 
-    static std::string token_to_string(TokenType token);
+    static std::string type_to_string(TokenType token);
 
 
 private:

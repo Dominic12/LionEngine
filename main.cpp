@@ -32,7 +32,17 @@ int main(int argc, char* argv[]) {
 
     auto *tokens = tokenizer.Tokenitze();
     Parser parser(tokens);
-    parser.Parse();
+    auto ast = parser.Parse();
+
+    for(auto &node : *ast->program->body){
+        node->execute();
+    }
+
+
+    for(int i = 0; i < tokens->size(); i++){
+        delete &tokens[i];
+    }
+    tokens->clear();
 
     return 0;
 }
