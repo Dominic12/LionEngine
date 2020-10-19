@@ -38,7 +38,7 @@ enum class BinaryExpressionOperator {
 };
 
 struct Statement {
-    static void execute(){
+    static void execute() {
         Logger::log("Executing statement base");
     }
 };
@@ -62,6 +62,7 @@ struct Declaration : Statement {
 struct ExpressionStatement : Statement {
     ExpressionType Type;
     void *value;
+    Statement *expression;
 };
 
 struct BinaryExpression : Statement {
@@ -103,7 +104,7 @@ struct CallExpression : ExpressionStatement {
 
 struct AbstractSyntaxTree {
     std::string type;
-    BlockStatement* program;
+    BlockStatement *program;
 };
 
 
