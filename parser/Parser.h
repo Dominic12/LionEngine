@@ -24,7 +24,11 @@ private:
 
     std::tuple<BlockStatement *, int> generateBlockStatement(int index, TokenHolder token);
 
+    std::tuple<MemberExpression *, int> generateMemberExpression(int index, TokenHolder token);
 
+    std::tuple<CallExpression *, int> generateCallExpression(int index, TokenHolder token);
+
+    std::tuple<ExpressionStatement *, int> generateExpressionStatement(int index, TokenHolder token);
 };
 
 
